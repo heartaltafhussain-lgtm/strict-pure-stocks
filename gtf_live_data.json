@@ -1,6 +1,6 @@
 {
   "date": "2026-08-17",
-  "timestamp": "2026-08-17 22:37:14 IST",
+  "timestamp": "2026-08-17 23:14:15 IST",
   "passwordRef": "7004602",
   "version": "v4.0 Strict Filter (Backtest-Tested)",
   "strictFilter": {
@@ -483,7 +483,7 @@
       "sig": "APPROACHING DEMAND",
       "watch": true,
       "rel": "NEAR",
-      "firstTop3Date": "2026-07-16"
+      "firstTop3Date": null
     },
     {
       "sym": "POWERINDIA",
@@ -630,7 +630,7 @@
       "sig": "APPROACHING DEMAND",
       "watch": true,
       "rel": "NEAR",
-      "firstTop3Date": "2026-06-08"
+      "firstTop3Date": null
     },
     {
       "sym": "SHYAMMETL",
@@ -703,7 +703,7 @@
       "ltp": 805.1,
       "z1d": "786.25 - 790.0 DR DEMAND",
       "s1d": "5.5 B",
-      "z1m": "399.84 - 409.23 DR DEMAND",
+      "z1m": "399.83 - 409.23 DR DEMAND",
       "s1m": "6.0 B",
       "w_trend": "1W UP • 20 EMA BULLISH",
       "tests_count": 1,
@@ -3150,7 +3150,7 @@
       "sig": "SUPPLY TEST",
       "watch": true,
       "rel": "IN",
-      "firstTop3Date": "2026-07-24"
+      "firstTop3Date": null
     },
     {
       "sym": "HFCL",
