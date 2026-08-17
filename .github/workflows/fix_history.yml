@@ -1,0 +1,83 @@
+name: Fix History (merge root all.json -> history/)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix-history:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Merge history files
+        shell: python
+        run: |
+          import json, os
+
+          def load(p):
+              with open(p, encoding="utf-8") as fh:
+                  return json.load(fh)
+
+          def sanitize(obj):
+              if isinstance(obj, dict):
+                  return {k: sanitize(v) for k, v in obj.items()}
+              if isinstance(obj, list):
+                  return [sanitize(v) for v in obj]
+              if isinstance(obj, float):
+                  if obj != obj or obj in (float("inf"), float("-inf")):
+                      return None
+                  return obj
+              return obj
+
+          seed = {}
+          if os.path.exists("all.json"):
+              seed = sanitize(load("all.json"))
+              print(f"root seed mila: {len(seed.get('scans', {}) or {})} dates")
+
+          hist = {"updated": "", "dates": [], "scans": {}}
+          if os.path.exists("history/all.json"):
+              hist = sanitize(load("history/all.json"))
+              print(f"history/all.json mila: {len(hist.get('scans', {}) or {})} dates")
+
+          merged = {}
+          seed_scans = seed.get("scans", {}) or {}
+          bot_scans = hist.get("scans", {}) or {}
+
+          for d, s in seed_scans.items():
+              merged[d] = s
+          for d, s in bot_scans.items():
+              merged[d] = s
+
+          dates = sorted(merged.keys(), reverse=True)
+          if len(dates) > 250:
+              for old in dates[250:]:
+                  merged.pop(old, None)
+              dates = dates[:250]
+
+          out = {
+              "updated": hist.get("updated", ""),
+              "dates": dates,
+              "scans": merged,
+              "source": "backtest replay seed + live scans (fix workflow merge)",
+          }
+          with open("history/all.json", "w", encoding="utf-8") as fh:
+              json.dump(out, fh, ensure_ascii=False, separators=(",", ":"))
+          print(f"MERGED OK: {len(dates)} dates | latest {dates[0]} | oldest {dates[-1]}")
+
+      - name: Remove stray root all.json
+        run: |
+          rm -f all.json
+
+      - name: Commit fix
+        run: |
+          git config --global user.name "History Fix Bot"
+          git config --global user.email "history-fix@github-actions.local"
+          git add -A
+          git commit -m "🛠 History fix: root all.json merged into history/all.json" || echo "No changes"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
