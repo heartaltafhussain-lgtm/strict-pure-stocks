@@ -35,11 +35,11 @@ jobs:
         run: |
           python3 strict_pure_stocks_scanner.py
 
-      - name: Commit live JSON + CSV back to repo (GitHub Pages feed)
+      - name: Commit live JSON + CSV + history back to repo (GitHub Pages feed)
         run: |
           git config --global user.name "Strict Pure Stocks Bot"
           git config --global user.email "strict-pure-stocks@github-actions.local"
-          git add gtf_live_data.json nifty500_universe.csv NIFTY500_GTF_Dashboard.csv NIFTY500_GTF_Dashboard.xlsx
+          git add gtf_live_data.json nifty500_universe.csv NIFTY500_GTF_Dashboard.csv NIFTY500_GTF_Dashboard.xlsx history/
           git commit -m "🎯 Strict Pure scan [$(date +'%Y-%m-%d')]" || echo "No changes to commit"
           git push
         env:
