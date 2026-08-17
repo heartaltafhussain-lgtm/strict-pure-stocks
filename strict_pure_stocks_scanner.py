@@ -801,6 +801,62 @@ def _score_num(txt):
     return float(m.group(1)) if m else 0.0
 
 
+def update_history(payload):
+    """Roz ka scan history/all.json me append karo (date-wise history filter ke liye).
+    Latest scan gtf_live_data.json me rehta hai; history me pura payload copy hota hai."""
+    try:
+        hist_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "history")
+        os.makedirs(hist_dir, exist_ok=True)
+        hist_path = os.path.join(hist_dir, "all.json")
+        hist = {"updated": "", "dates": [], "scans": {}}
+        if os.path.exists(hist_path):
+            try:
+                with open(hist_path, "r", encoding="utf-8") as fh:
+                    hist = json.load(fh)
+            except Exception:
+                hist = {"updated": "", "dates": [], "scans": {}}
+        d = payload.get("date")
+        if not d:
+            return
+        hist.setdefault("scans", {})[d] = payload
+        dates = [x for x in hist.get("dates", []) if x != d]
+        dates.append(d)
+        dates.sort(reverse=True)
+        # history cap (safety): last 250 scans
+        if len(dates) > 250:
+            for old in dates[250:]:
+                hist.get("scans", {}).pop(old, None)
+            dates = dates[:250]
+        hist["dates"] = dates
+        hist["updated"] = payload.get("timestamp", "")
+        with open(hist_path, "w", encoding="utf-8") as fh:
+            json.dump(hist, fh, ensure_ascii=False, separators=(",", ":"))
+        log(f"[✓] History updated: {len(dates)} dates (latest {dates[0] if dates else '-'})")
+    except Exception as exc:
+        log(f"[!] History update failed (non-fatal): {exc}")
+
+
+def load_first_top3_dates():
+    """history/all.json se sym -> 'pehli baar strict top-3 me aane ki date' ka map."""
+    try:
+        hist_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "history", "all.json")
+        if not os.path.exists(hist_path):
+            return {}
+        with open(hist_path, "r", encoding="utf-8") as fh:
+            hist = json.load(fh)
+        out = {}
+        scans = hist.get("scans", {}) or {}
+        for d in sorted(scans.keys()):
+            for t in scans[d].get("top3", []) or []:
+                sym = t.get("sym") if isinstance(t, dict) else None
+                if sym and sym not in out:
+                    out[sym] = d
+        return out
+    except Exception as exc:
+        log(f"[!] first-top3 map load failed (non-fatal): {exc}")
+        return {}
+
+
 def scan():
     now = today_ist()
     today_str = now.strftime("%Y-%m-%d")
@@ -1037,6 +1093,16 @@ def scan():
         "sectorIndices": sector_cards,
         "stockData": public_rows,
     }
+
+    # date-wise history pehle update karo (firstTop3Date ke liye aaj ka din bhi map me chahiye)
+    update_history(payload)
+
+    # 📅 first time in strict top-3 — har pick/stock ke liye pehli appearance date
+    first_map = load_first_top3_dates()
+    for p in payload.get("top3", []):
+        p["firstTop3Date"] = first_map.get(p.get("sym"))
+    for r in payload.get("stockData", []):
+        r["firstTop3Date"] = first_map.get(r.get("sym"))
 
     with open("gtf_live_data.json", "w", encoding="utf-8") as fh:
         json.dump(payload, fh, indent=2, ensure_ascii=False)
