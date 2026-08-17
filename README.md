@@ -3,6 +3,29 @@
 **Backtest-tested** swing scanner. NSE 500 me se sirf woh stocks filter karta hai jo
 2.5 saal ke backtest me profitable nikle — weak picks dikhana band.
 
+## 🖱 Dashboard UI (user-friendly, purane dashboard ke sab best features)
+
+- 🗂 **Sector card click = table filter** (card select karo, zone table wahi sector dikhayega; dobara click = clear)
+- 📅 **DATE-WISE HISTORY FILTER**: zone table ke strip me date dropdown — purane din ka poora scan dekho
+  (top-3, watchlist, sector cards, zone table sab us din ka). Scanner har din ka scan `history/all.json` me
+  save karta hai (last 250 scans) aur GitHub Pages se live load hota hai. Seed me ~76 din ki history pehle se
+  hai (May–Aug 2026 backtest replay) — live scans aage apne aap judte jayenge.
+- 🏆 **TOP-3 HISTORY DROPDOWN**: STRICT TOP-3 section me bhi apna 📅 date dropdown — purane din ki
+  picks dekho (dono dropdowns sync me hain).
+- 🆕 **FIRST IN TOP-3 COLUMN**: har pick ke saath wo date jab stock <b>pehli baar strict top-3</b> me aaya tha
+  (poori history se scanner khud compute karta hai + dashboard client-side fallback). Pehli baar aane
+  wale pick pe "🆕 FIRST TIME" badge dikhta hai. Watchlist me bhi ye column hai.
+- 📌 **SYMBOL column fixed** — table left/right slide karo, pehla column apni jagah rehta hai
+- 📊 **Stock name click = TradingView chart** (har row me 📊 link)
+- ⬇ **Filtered CSV download** — zone table ka current filter jaisa dikh raha hai, waisa CSV
+- 🔒 **Har baar open karne pe password** (auto-unlock hata diya gaya)
+- 📅 **Scan date line** (header me): scan date + "Aaj ka scan ✅ / Last scan ⏳" + auto-scan time
+- 🔄 **Refresh feedback**: button "⏳ Refreshing…" hota hai, phir toast me "✅ Refreshed — scan date: X"
+  aur table subtitle me bhi scan date likhi hoti hai (kal ka data kyun lag raha hai — ye ab saaf dikhega)
+
+> ⚠️ Agar 15:45 IST se pehle kholte ho to data pichhle din ka hona NORMAL hai —
+> ab dashboard khud bata dega. Naya scan har trading din 15:45 ke baad aata hai.
+
 > Backtest (Jan 2024 → Aug 2026, 783 filled trades):
 > | | Old v3.19 | **Strict v4.0** |
 > |---|---|---|
@@ -83,6 +106,7 @@ STRICT_SECTORS = {"OIL","FMCG","BANK","HEALTHCARE","INFRA","AUTO","FINSERVICE","
 | `gtf_v2.py` | Course-faithful zone detector (Ep 3-8: multi-base zones, 7-pt trade score) — veto engine |
 | `index.html` | Strict Pure Stocks dashboard — data `gtf_live_data.json` se load karta hai (offline demo bhi embedded hai) |
 | `gtf_live_data.json` | Roz ka live scan output (bot isi ko update karta hai) |
+| `history/all.json` | Date-wise history — har din ke scan ki copy (dashboard ka 📅 History filter) |
 | `.github/workflows/daily_scan.yml` | Mon–Fri 15:45 IST automated scan |
 | `nifty500_universe.csv` | Nifty 500 universe (Wikipedia fail hone pe offline fallback) |
 | `NIFTY500_GTF_Dashboard.csv/xlsx` | Roz ka full export |
