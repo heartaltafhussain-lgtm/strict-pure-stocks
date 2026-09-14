@@ -1,6 +1,6 @@
 {
-  "date": "2026-09-11",
-  "timestamp": "2026-09-11 19:55:13 IST",
+  "date": "2026-09-14",
+  "timestamp": "2026-09-14 21:51:55 IST",
   "passwordRef": "7004602",
   "version": "v4.0 Strict Filter (Backtest-Tested)",
   "strictFilter": {
@@ -47,7 +47,7 @@
       "type": "NEUTRAL",
       "score": "LIVE",
       "ltp": "NSE 500",
-      "desc": "Only stocks sitting IN/NEAR a valid unmitigated 1D or 1M GTF zone on 2026-09-11.",
+      "desc": "Only stocks sitting IN/NEAR a valid unmitigated 1D or 1M GTF zone on 2026-09-14.",
       "bonus": "AUTO"
     },
     {
@@ -934,7 +934,7 @@
       "ltp": 788.0,
       "z1d": "773.4 - 782.65 DR DEMAND",
       "s1d": "4.0 C",
-      "z1m": "399.84 - 409.23 DR DEMAND",
+      "z1m": "399.83 - 409.23 DR DEMAND",
       "s1m": "6.0 B",
       "w_trend": "1W UP • 20 EMA BULLISH",
       "tests_count": 1,
@@ -2593,7 +2593,7 @@
       "ltp": 23535.0,
       "z1d": "24000.0 - 24225.0 RD SUPPLY",
       "s1d": "4.5 C",
-      "z1m": "10163.48 - 10582.66 DR DEMAND",
+      "z1m": "10163.49 - 10582.66 DR DEMAND",
       "s1m": "5.0 C",
       "w_trend": "1W UP • 20 EMA BULLISH",
       "tests_count": 1,
