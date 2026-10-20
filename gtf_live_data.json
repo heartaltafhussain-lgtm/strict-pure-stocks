@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-19",
-  "timestamp": "2026-10-19 22:28:44 IST",
+  "date": "2026-10-20",
+  "timestamp": "2026-10-20 20:33:34 IST",
   "passwordRef": "7004602",
   "version": "v4.0 Strict Filter (Backtest-Tested)",
   "strictFilter": {
@@ -47,7 +47,7 @@
       "type": "NEUTRAL",
       "score": "LIVE",
       "ltp": "NSE 500",
-      "desc": "Only stocks sitting IN/NEAR a valid unmitigated 1D or 1M GTF zone on 2026-10-19.",
+      "desc": "Only stocks sitting IN/NEAR a valid unmitigated 1D or 1M GTF zone on 2026-10-20.",
       "bonus": "AUTO"
     },
     {
@@ -430,7 +430,7 @@
       "ltp": 794.0,
       "z1d": "774.5 - 783.3 DR DEMAND",
       "s1d": "6.5 B",
-      "z1m": "399.83 - 409.23 DR DEMAND",
+      "z1m": "399.84 - 409.23 DR DEMAND",
       "s1m": "6.0 B",
       "w_trend": "1W UP • 20 EMA BULLISH",
       "tests_count": 0,
@@ -1039,7 +1039,7 @@
       "ltp": 2879.0,
       "z1d": "2853.5 - 2856.8 DR DEMAND",
       "s1d": "4.5 C",
-      "z1m": "2494.13 - 2528.7 DR DEMAND",
+      "z1m": "2494.13 - 2528.69 DR DEMAND",
       "s1m": "5.0 C",
       "w_trend": "1W DOWN • 20 EMA BEARISH",
       "tests_count": 1,
@@ -1543,7 +1543,7 @@
       "ltp": 19220.0,
       "z1d": "19155.0 - 19273.0 DR DEMAND",
       "s1d": "7.0 A",
-      "z1m": "10163.49 - 10582.66 DR DEMAND",
+      "z1m": "10163.48 - 10582.66 DR DEMAND",
       "s1m": "4.0 C",
       "w_trend": "1W DOWN • 20 EMA BEARISH",
       "tests_count": 0,
