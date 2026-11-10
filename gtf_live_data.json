@@ -1,6 +1,6 @@
 {
   "date": "2026-11-10",
-  "timestamp": "2026-11-10 02:12:41 IST",
+  "timestamp": "2026-11-10 23:18:30 IST",
   "passwordRef": "7004602",
   "version": "v4.0 Strict Filter (Backtest-Tested)",
   "strictFilter": {
@@ -32,9 +32,9 @@
     "ohlcOk": 498,
     "scanned": 498,
     "failed": 2,
-    "inZone": 106,
+    "inZone": 105,
     "demand": 25,
-    "supply": 81,
+    "supply": 80,
     "equilibrium": 0,
     "buyReady": 1
   },
@@ -67,7 +67,7 @@
       "type": "SUPPLY",
       "score": "8.5 A",
       "ltp": "—",
-      "desc": "NIFTY ENERGY: 0 demand / 4 supply zone stocks in today's auto-filter. Oil & energy names.",
+      "desc": "NIFTY ENERGY: 0 demand / 3 supply zone stocks in today's auto-filter. Oil & energy names.",
       "bonus": "0.0 PTS (Supply Near)"
     },
     {
@@ -984,27 +984,6 @@
       "vol_expl": "NORMAL VOL",
       "secBonus": "+0.0 PTS",
       "combo": "8.0 / 10 SUPPLY",
-      "sig": "NEAR SUPPLY",
-      "watch": true,
-      "rel": "NEAR",
-      "firstTop3Date": null
-    },
-    {
-      "sym": "AEGISLOG",
-      "comp": "Aegis Logistics Ltd.",
-      "sector": "OIL",
-      "type": "SUPPLY",
-      "ltp": 1226.7,
-      "z1d": "1245.0 - 1259.1 RD SUPPLY",
-      "s1d": "7.5 A",
-      "z1m": "1080.2 - 1096.7 DR DEMAND",
-      "s1m": "7.0 A",
-      "w_trend": "1W UP • 20 EMA BULLISH",
-      "tests_count": 0,
-      "fresh_badge": "🟢 0 TESTS (FRESH)",
-      "vol_expl": "NORMAL VOL",
-      "secBonus": "+0.0 PTS",
-      "combo": "7.5 / 10 SUPPLY",
       "sig": "NEAR SUPPLY",
       "watch": true,
       "rel": "NEAR",
