@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-13",
-  "timestamp": "2026-11-13 23:13:28 IST",
+  "date": "2026-11-17",
+  "timestamp": "2026-11-17 01:56:59 IST",
   "passwordRef": "7004602",
   "version": "v4.0 Strict Filter (Backtest-Tested)",
   "strictFilter": {
@@ -47,7 +47,7 @@
       "type": "NEUTRAL",
       "score": "LIVE",
       "ltp": "NSE 500",
-      "desc": "Only stocks sitting IN/NEAR a valid unmitigated 1D or 1M GTF zone on 2026-11-13.",
+      "desc": "Only stocks sitting IN/NEAR a valid unmitigated 1D or 1M GTF zone on 2026-11-17.",
       "bonus": "AUTO"
     },
     {
