@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-25",
-  "timestamp": "2026-11-25 02:08:52 IST",
+  "date": "2026-11-26",
+  "timestamp": "2026-11-26 01:26:02 IST",
   "passwordRef": "7004602",
   "version": "v4.0 Strict Filter (Backtest-Tested)",
   "strictFilter": {
@@ -29,9 +29,9 @@
   },
   "scanStats": {
     "universe": 500,
-    "ohlcOk": 498,
-    "scanned": 498,
-    "failed": 2,
+    "ohlcOk": 499,
+    "scanned": 499,
+    "failed": 1,
     "inZone": 155,
     "demand": 76,
     "supply": 78,
@@ -47,7 +47,7 @@
       "type": "NEUTRAL",
       "score": "LIVE",
       "ltp": "NSE 500",
-      "desc": "Only stocks sitting IN/NEAR a valid unmitigated 1D or 1M GTF zone on 2026-11-25.",
+      "desc": "Only stocks sitting IN/NEAR a valid unmitigated 1D or 1M GTF zone on 2026-11-26.",
       "bonus": "AUTO"
     },
     {
@@ -640,7 +640,7 @@
       "ltp": 3075.2,
       "z1d": "3009.0 - 3020.0 DR DEMAND",
       "s1d": "7.5 A",
-      "z1m": "2494.13 - 2528.7 DR DEMAND",
+      "z1m": "2494.13 - 2528.69 DR DEMAND",
       "s1m": "5.0 C",
       "w_trend": "1W DOWN • 20 EMA BEARISH",
       "tests_count": 0,
